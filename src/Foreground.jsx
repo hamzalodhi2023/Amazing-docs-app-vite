@@ -1,28 +1,36 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Cards from "./components/Cards";
 
 function Foreground() {
-  // const data = [
-  //   desc,fileSize,closeOrDownload,tagDetails
-  // ];
+  const ref = useRef(null);
   const data = [
     {
       desc: "Lorem ipsum dolor sit, amet consectetur adipisicing amet consectetur adipisicing.",
       fileSize: ".9mb",
-      close: true,
-      tag: { isOpen: true, tagTitle: "Download Now", tagColor: "green" },
+      close: false,
+      tag: { isOpen: false, tagTitle: "Download Now", tagColor: "bg-blue-600" },
     },
     {
-      desc: "Hello My name is Hamza Khan Lodhi",
-      fileSize: ".5mb",
+      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing amet consectetur adipisicing.",
+      fileSize: ".9mb",
       close: true,
-      tag: { isOpen: true, tagTitle: "Hello", tagColor: "green" },
+      tag: { isOpen: true, tagTitle: "Download Now", tagColor: "bg-red-600" },
+    },
+    {
+      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing amet consectetur adipisicing.",
+      fileSize: ".9mb",
+      close: true,
+      tag: { isOpen: true, tagTitle: "Download Now", tagColor: "bg-green-600" },
     },
   ];
+
   return (
-    <div className="fixed z-[3] w-full h-full flex items-center justify-center">
+    <div
+      ref={ref}
+      className="fixed overflow-hidden z-[3] w-full h-full flex gap-5 flex-wrap"
+    >
       {data.map((item, index) => (
-        <Cards data={item} />
+        <Cards data={item} reference={ref} />
       ))}
     </div>
   );
